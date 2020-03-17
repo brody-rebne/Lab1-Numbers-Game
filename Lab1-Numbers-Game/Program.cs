@@ -31,6 +31,13 @@ namespace Lab1_Numbers_Game
                 gameNumbers = Populate(gameNumbers);
                 int sum = Add(gameNumbers);
                 int product = Multiply(gameNumbers, sum);
+                decimal quotient = Divide(product);
+
+                Console.WriteLine($"Your array length is {gameLength}");
+                Console.WriteLine($"The numbers in your array are {String.Join(", ", gameNumbers)}");
+                Console.WriteLine($"The sum of your array is {sum}");
+                Console.WriteLine($"The product of your sum and the number you chose is {product}");
+                Console.WriteLine($"The quotient of your product and the number you gave is {quotient}");
             }
             catch (FormatException e)
             {
@@ -47,7 +54,7 @@ namespace Lab1_Numbers_Game
             int[] populatedNumbers = new int[array.Length];
             for (int i = 0; i<array.Length; i++)
             {
-                Console.WriteLine($"Please enter a positive integer ({i} of {array}");
+                Console.WriteLine($"Please enter a positive integer ({i} of {array.Length})");
                 populatedNumbers[i] = Convert.ToInt32(Console.ReadLine());
             }
             return populatedNumbers;
@@ -67,18 +74,35 @@ namespace Lab1_Numbers_Game
             return sum;
         }
 
-        public static int Multiply(int[] numbers, int sum)
+        public static int Multiply(int[] numbers, int input)
         {
             try
             {
                 Console.WriteLine($"Please enter a number between 1 and {numbers.Length}");
                 int index = Convert.ToInt32(Console.ReadLine()) - 1;
-                int product = sum * numbers[];
+                int product = input * numbers[index];
                 return product;
             }
             catch(IndexOutOfRangeException e)
             {
+                Console.Write(e);
                 throw;
+            }
+        }
+
+        public static decimal Divide(int input)
+        {
+            try
+            {
+                Console.WriteLine($"Please input a number to divide your product ({input}) by");
+                decimal divisor = Convert.ToDecimal(Console.ReadLine());
+                decimal quotient = Decimal.Divide(input, divisor);
+                return quotient;
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e);
+                return 0;
             }
         }
     }
