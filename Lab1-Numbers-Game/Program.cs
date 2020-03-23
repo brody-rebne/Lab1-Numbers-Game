@@ -122,7 +122,7 @@ namespace Lab1_Numbers_Game
         }
 
         /// <summary>
-        /// Divides a given number by a user-input number
+        /// Divides a given number by a user input number
         /// </summary>
         /// <param name="input">The number to be divided</param>
         /// <returns>The quotient of the given number and a user input</returns>
